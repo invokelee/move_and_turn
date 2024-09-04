@@ -40,6 +40,7 @@ def start_move_and_turn_callback(req):
     return TriggerResponse(success=True, message="Move and Turn Started")
 
 
+rospy.loginfo("Started move_and_turn node")
 rospy.init_node('move_and_turn_node', anonymous=False)
 pub_cmd_vel = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
 move_distance = 0.5  # distance in meters to move straight
