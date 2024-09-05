@@ -1,5 +1,5 @@
 #!/bin/bash
-env -e
+set -e
 rostopic pub /drone/takeoff std_msgs/Empty '{}' &
 TAKEOFF_ID=$!
 sleep 10s
