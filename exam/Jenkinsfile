@@ -1,0 +1,20 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Make the droe land') {
+            steps {
+                sh '''
+                rostopic pub /drone/land std_msgs/Empty "{}" &
+                LAND_ID=$!
+                '''
+            }
+        }
+        stage('Done') {
+            steps {
+                sleep 5s
+                kill $LAND_ID
+                echo 'Pipeline completed'
+            }
+        }
+    }
+}
