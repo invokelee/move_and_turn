@@ -6,14 +6,14 @@ pipeline {
                 sh '''
                 rostopic pub /drone/land std_msgs/Empty "{}" &
                 LAND_ID=$!
+                sleep 5s
+                kill $LAND_ID
                 '''
             }
         }
         stage('Done') {
             steps {
                 sh '''
-                sleep 5s
-                kill $LAND_ID
                 echo "Pipeline completed"
                 '''
             }
