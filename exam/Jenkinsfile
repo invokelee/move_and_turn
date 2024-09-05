@@ -1,6 +1,11 @@
 pipeline {
     agent any 
     stages {
+        stage('Run tests') {
+            steps {
+                sh 'python ~/catkin_ws/src/move_and_turn/exam/test_drone_sim.py'
+            }
+        }
         stage('Make the droe land') {
             steps {
                 sh '''
