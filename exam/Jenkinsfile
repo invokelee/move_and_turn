@@ -11,9 +11,11 @@ pipeline {
         }
         stage('Done') {
             steps {
+                sh '''
                 sleep 5s
                 kill $LAND_ID
-                echo 'Pipeline completed'
+                echo "Pipeline completed"
+                '''
             }
         }
     }
